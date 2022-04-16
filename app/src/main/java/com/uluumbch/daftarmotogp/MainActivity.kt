@@ -1,9 +1,10 @@
 package com.uluumbch.daftarmotogp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uluumbch.daftarmotogp.adapter.MyAdapter
 import com.uluumbch.daftarmotogp.data.Data
 import com.uluumbch.daftarmotogp.databinding.ActivityMainBinding
+import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -21,10 +23,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         recyclerView = binding.recyclerView
-        recyclerView.adapter = MyAdapter()
+        val adapter = MyAdapter()
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener{
+
+            override fun onItemClick(postition: Int) {
+                super.onItemClick(postition)
+                val data = Data.myData
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+
+                intent.putExtra("position", postition)
+                intent.putExtra("data", data[postition] as Serializable)
+                startActivity(intent)
+
+
+            }
+        })
 
         recyclerView.setHasFixedSize(true)
     }
+
 
     //    fungsi chooseLayout() untuk memilih layout pada recycler view
 //    ke jenis layout yang dipilih pada tombol
@@ -34,7 +52,23 @@ class MainActivity : AppCompatActivity() {
         } else {
             recyclerView.layoutManager = GridLayoutManager(this, 2)
         }
-        recyclerView.adapter = MyAdapter()
+//        recyclerView.adapter = MyAdapter()
+        val adapter = MyAdapter()
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener{
+
+            override fun onItemClick(postition: Int) {
+                super.onItemClick(postition)
+                val data = Data.myData
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+
+                intent.putExtra("position", postition)
+                intent.putExtra("data", data[postition] as Serializable)
+                startActivity(intent)
+
+
+            }
+        })
     }
 
     private fun setIcon(menuItem: MenuItem?) {

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+
+    <ImageView
+        android:id="@+id/hasil_gambar"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/andreadovizioso" />
+
+    <TextView
+        android:id="@+id/hasil_nama"
+        android:textStyle="bold"
+        style="@style/TextAppearance.AppCompat.Display1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/hasil_gambar"
+        android:text="@string/nama1" />
+
+    <TextView
+        android:id="@+id/hasil_bike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@+id/hasil_nama"
+        android:layout_toEndOf="@+id/hasil_gambar"
+        android:text="@string/bike" />
+
+    <TextView
+        android:id="@+id/hasil_DOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_below="@+id/hasil_bike"
+        android:layout_toEndOf="@id/hasil_gambar"
+        android:text="@string/dob"/>
+
+    <TextView
+        android:id="@+id/hasil_hw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_below="@+id/hasil_DOB"
+        android:layout_toEndOf="@id/hasil_gambar"
+        android:text="@string/hw"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/hasil_gambar">
+
+        <TextView
+            android:id="@+id/hasil_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
+
+</RelativeLayout>

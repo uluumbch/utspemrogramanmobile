@@ -1,6 +1,7 @@
 package com.uluumbch.daftarmotogp.model
 
 import androidx.annotation.DrawableRes
+import java.io.Serializable
 
 data class MotoGP(
     @DrawableRes val imageResourceId: Int,
@@ -8,6 +9,7 @@ data class MotoGP(
     val stringName: String,
     val bike: String,
     val DOB: String,
-    val height: String
-) {
-}
+    val height: String,
+    val weight: String,
+    val info: String
+) : Serializable

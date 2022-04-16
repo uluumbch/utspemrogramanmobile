@@ -9,23 +9,40 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uluumbch.daftarmotogp.R
 import com.uluumbch.daftarmotogp.data.Data
 
-class MyAdapter :
+class MyAdapter() :
     RecyclerView.Adapter<MyAdapter.ItemViewHolder>() {
     private val data = Data.myData
+    private lateinit var mListener: OnItemClickListener
 
-    class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    interface OnItemClickListener{
+        fun onItemClick(postition: Int){
+
+        }
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        mListener = listener
+    }
+
+
+    class ItemViewHolder(view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.picture)
         val country: ImageView = view.findViewById(R.id.person_country)
         val nameTextview: TextView = view.findViewById(R.id.person_name)
-        val bikeTextView: TextView = view.findViewById(R.id.person_bike)
-        val dobTextView: TextView = view.findViewById(R.id.person_DOB)
-        val heightTextView: TextView = view.findViewById(R.id.person_height)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_of_item, parent, false)
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(adapterLayout, mListener)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -33,9 +50,6 @@ class MyAdapter :
         holder.image.setImageResource(item.imageResourceId)
         holder.country.setImageResource(item.countryIcon)
         holder.nameTextview.text = item.stringName
-        holder.bikeTextView.text = item.bike
-        holder.dobTextView.text = item.DOB
-        holder.heightTextView.text = item.height
     }
 
     override fun getItemCount(): Int {

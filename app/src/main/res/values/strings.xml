@@ -1,15 +1,9 @@
 <resources>
     <string name="app_name">Bachrul Uluum</string>
     <string name="action_switch_layout">Switch Layout</string>
-    <string name="name1">Andrea Dovizioso</string>
-
-    <string name="name2">Fabio Quartararo</string>
-    <string name="name3">Franco Morbideli</string>
-    <string name="name4">Jack Miller</string>
-    <string name="name5">Johann Zarco</string>
-    <string name="name6">Luca Marini</string>
-    <string name="name7">Marc Marquez</string>
-    <string name="name8">Maverick Viñales</string>
-    <string name="name9">Stefan Bradl</string>
-    <string name="name10">Takaaki Nakagami</string>
+    <string name="nama1">Fabio Quartararo</string>
+    
+    <string name="bike">Bike : %s</string>
+    <string name="hw">Height : %s | Weight : %s</string>
+    <string name="dob">Date Of Birth : %s</string>
 </resources>
